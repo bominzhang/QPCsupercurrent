@@ -52,7 +52,7 @@ def upd(d, **kwargs):
     return d
 
 
-def run_simulation("lview," func, vals, parameters, fname_i, N=None,
+def run_simulation(lview, func, vals, parameters, fname_i, N=None,
                    overwrite=False):
     """Run a simulation where one loops over `vals`. The simulation
     yields len(vals) results, but by using `N`, you can split it up
