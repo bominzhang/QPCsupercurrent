@@ -9,3 +9,6 @@ dependencies:
   - pandas=0.20.3
   - pytables=3.4.2
   - toolz=0.8.2
+  - numpy=1.14.5
+  - ipyparallel
+  - dill
