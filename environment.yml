@@ -6,8 +6,9 @@ dependencies:
   - kwant=1.3
   - holoviews=1.8.1
   - xarray=0.9.6
-  - pandas
+  - pandas=0.20.3
   - pytables=3.4.2
   - toolz=0.8.2
+  - numpy=1.14.5
   - ipyparallel
   - dill
