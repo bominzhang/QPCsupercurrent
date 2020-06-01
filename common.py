@@ -40,7 +40,6 @@ import sys
 import numpy as np
 import pandas as pd
 from toolz import partition_all
-from multiprocessing import pool
 
 assert sys.version_info >= (3, 6), 'Use Python ≥3.6'
 
@@ -53,7 +52,7 @@ def upd(d, **kwargs):
     return d
 
 
-def run_simulation(func, vals, parameters, fname_i, N=None, overwrite=False):
+def run_simulation(lview, func, vals, parameters, fname_i, N=None, overwrite=False):
     
     """Run a simulation where one loops over `vals`. The simulation
     yields len(vals) results, but by using `N`, you can split it up
@@ -92,8 +91,7 @@ def run_simulation(func, vals, parameters, fname_i, N=None, overwrite=False):
         fname = fname_i #.replace('{}', '{:03d}') .format(i)
         print('Busy with file: {}.'.format(fname))
         if not os.path.exists(fname) or overwrite:
-            map_async = pool.map_async(func, chunk)
-#            map_async = lview.map_async(func, chunk)
+            map_async = lview.map_async(func, chunk)
             map_async.wait_interactive()
             result = map_async.result()
             df = pd.DataFrame(result)
