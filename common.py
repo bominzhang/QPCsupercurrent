@@ -96,7 +96,7 @@ def run_simulation(lview, func, vals, parameters, fname_i, N=None, overwrite=Fal
             result = map_async.result()
             df = pd.DataFrame(result)
             df = df.assign(**parameters)
-            df = df.assign(git_hash=get_git_revision_hash())
+#            df = df.assign(git_hash=get_git_revision_hash())
             os.makedirs(os.path.dirname(fname), exist_ok=True)
             df.to_hdf(fname, 'all_data', mode='w', complib='zlib', complevel=9)
 
